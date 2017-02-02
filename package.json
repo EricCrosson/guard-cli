@@ -1,6 +1,6 @@
 {
   "name": "guard-cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Busy-wait synchronization in the terminal",
   "main": "index.js",
   "bin": {
