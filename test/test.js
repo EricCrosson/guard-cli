@@ -1,15 +1,42 @@
-var assert = require('assert');
-var should = require('should');
+const fs = require('fs');
+const assert = require('assert');
+const should = require('should');
 
-const guard = require('../index.js').guard;
+const _ = require('lodash');
+const guard = require('../guard.js').guard;
+const spawn = require('../spawn.js');
 
-describe('guard', function() {
-    xit('should block until test is true', function(done) {
-        const startTime = (new Date).getTime();
-        const expectedEnd = startTime + 1000;  // milliseconds
-        guard('').then(elapsedTime => {
-            elapsedTime.should.be.within(0, 15);
-            done();
-        }).catch(err => done(err));
-    });
-});
+const samples = 10;
+const timeout = 10000;
+const testPath = '/tmp/test.json'
+
+function waitAndCreate(testFile) {
+    const delay = Math.random() * timeout/1000;
+    console.log("Sleeping for " + delay + " seconds")
+    // fixme: put this in the `it` descriptor
+    spawn(`sleep ${delay}s && touch ${testPath}`)
+        .then()
+        .catch(e => console.log(e))
+}
+
+_.times(samples, function() {
+
+    describe('guard', function() {
+        before(function() {
+            if (fs.existsSync(testPath)) {
+                fs.unlinkSync(testPath);
+            }
+        });
+        it('should block until test is true', function(done) {
+            waitAndCreate();
+            // fixme: what is a useful return from `guard`? time
+            // elapsed while waiting?
+            guard(`test -e ${testPath}`)
+                .then(function () {
+                    done();
+                })
+                .catch(err => done(err));
+        }).timeout(samples*timeout);
+    })
+}
+       );

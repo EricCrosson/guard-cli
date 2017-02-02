@@ -1,6 +1,8 @@
 Overview
 ========
 
+[![Build Status](https://travis-ci.org/EricCrosson/guard-cli.svg?branch=master)](https://travis-ci.org/EricCrosson/guard-cli)
+
 This package
 simplifies [busy-wait](https://en.m.wikipedia.org/wiki/Busy_waiting)
 synchronization in the terminal.
