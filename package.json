@@ -1,0 +1,34 @@
+{
+  "name": "guard-cli",
+  "version": "0.1.0",
+  "description": "Busy-wait synchronization in the terminal",
+  "main": "index.js",
+  "bin": {
+    "guard": "index.js"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "mocha": "^3.2.0",
+    "should": "^11.2.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ericcrosson/guard-cli.git"
+  },
+  "keywords": [],
+  "author": "Eric Crosson",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/ericcrosson/guard-cli/issues"
+  },
+  "homepage": "https://github.com/ericcrosson/guard-cli#readme",
+  "directories": {
+    "test": "test"
+  }
+}
