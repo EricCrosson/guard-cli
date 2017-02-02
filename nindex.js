@@ -4,11 +4,11 @@
 
 const _ = require('lodash');
 
-const guard = require('./guard.js').guard;
+const nguard = require('./guard.js').nguard;
 
 function main(args) {
     const test = _.join(args, ' ');
-    guard(test)
+    nguard(test)
         .then()
         .catch(e => console.log(e));
 }
